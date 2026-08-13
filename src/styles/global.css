@@ -269,6 +269,60 @@ p {
   color: var(--ink-soft);
 }
 
+.education-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.education-timeline li {
+  position: relative;
+  padding: 0 0 1.8rem 1.5rem;
+  border-left: 1px solid var(--line-strong);
+}
+
+.education-timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.education-timeline li::before {
+  position: absolute;
+  top: 0.35rem;
+  left: -0.3rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  content: '';
+}
+
+.education-period {
+  margin-bottom: 0.15rem;
+  color: var(--ink-faint);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.education-timeline h3 {
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.education-institution,
+.education-detail {
+  margin-bottom: 0.15rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.education-detail {
+  max-width: 46rem;
+}
+
 .section-block {
   padding-block: clamp(3rem, 5vw, 4.25rem);
   border-bottom: 1px solid var(--line);
