@@ -5,7 +5,7 @@ export const profile = {
   previousDegree: {
     degree: 'MMath in Mathematics',
     institution: 'University of Oxford',
-    result: 'First class (24/126), with distinction in Masters',
+    result: 'First class',
   },
   researchAreas: [
     'Numerical analysis',
