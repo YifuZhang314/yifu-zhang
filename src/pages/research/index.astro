@@ -9,37 +9,25 @@ const description =
 
 <BaseLayout title="Research" description={description}>
   <header class="page-header section-shell">
-    <p class="eyebrow">Research</p>
-    <h1>Numerical methods for approximation and learning</h1>
+    <h1>Research</h1>
     <p class="page-deck">
-      My work brings together approximation theory, randomized numerical linear
-      algebra and numerical analysis, with a developing interest in operator
-      learning.
+      Numerical analysis, randomized numerical linear algebra, approximation
+      theory and operator learning.
     </p>
   </header>
 
   <section class="section-shell phd-note" aria-labelledby="phd-heading">
     <div>
-      <p class="section-kicker">Incoming PhD</p>
-      <h2 id="phd-heading">Imperial College London</h2>
+      <p class="section-kicker">Current position</p>
+      <h2 id="phd-heading">Incoming PhD</h2>
     </div>
     <div>
       <p>
-        I will begin a Mathematics PhD at Imperial College London. My
-        supervisors are {
+        Incoming Mathematics PhD student at Imperial College London, supervised
+        by {
           profile.supervisors.map((supervisor) => supervisor.name).join(', ')
         }.
       </p>
-      <ul class="supervisor-list" aria-label="PhD supervisors and institutions">
-        {
-          profile.supervisors.map((supervisor) => (
-            <li>
-              <span>{supervisor.name}</span>
-              <span>{supervisor.institution}</span>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
@@ -49,17 +37,13 @@ const description =
   >
     <div class="section-heading-row">
       <div>
-        <p class="section-kicker">Projects</p>
-        <h2 id="projects-heading">Research record</h2>
+        <h2 id="projects-heading">Projects</h2>
       </div>
     </div>
 
     {
-      researchProjects.map((project, index) => (
+      researchProjects.map((project) => (
         <article class="research-detail" id={project.slug}>
-          <div class="research-detail-index" aria-hidden="true">
-            {String(index + 1).padStart(2, '0')}
-          </div>
           <div class="research-detail-main">
             <p class="meta-line">{project.area}</p>
             <h3>{project.title}</h3>
