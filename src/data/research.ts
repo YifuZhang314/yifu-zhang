@@ -15,7 +15,7 @@ export const researchProjects: readonly ResearchProject[] = [
     title: 'Function approximation under heteroskedastic noise',
     area: 'Approximation theory · Numerical analysis',
     summary:
-      'HeteroChebtrunc adapts Chebyshev-based approximation to samples whose noise variance changes across the domain.',
+      'HeteroChebtrunc adapts Chebyshev-based approximation to reduce effect of heteroskedastic noise',
     paragraphs: [
       'HeteroChebtrunc adapts Chebyshev-based approximation to the heteroskedastic setting, where noise variance depends on the sampling location. The paper gives a high-probability infinity-norm error comparison and studies sample-variance estimation under subgaussian noise.',
     ],
