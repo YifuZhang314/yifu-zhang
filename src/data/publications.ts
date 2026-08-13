@@ -29,7 +29,7 @@ export const publications: readonly Publication[] = [
     citation:
       'Yuji Nakatsukasa and Yifu Zhang. “Efficient Function Approximation Under Heteroskedastic Noise.” arXiv:2508.08683 [math.NA], 2025.',
     summary:
-      'Introduces HeteroChebtrunc, a method for approximating functions from samples with location-dependent noise, together with high-probability error analysis and numerical experiments.',
+      'Introduces HeteroChebtrunc, a method for approximating functions from samples under heteroskedastic (non-uniform variance) noise, together with high-probability error analysis and numerical experiments.',
     datePublished: '2025-08-12',
     links: {
       arxiv: 'https://arxiv.org/abs/2508.08683',
