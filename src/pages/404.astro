@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sitePath } from '../lib/site';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page could not be found on Yifu Zhang's academic website."
+  noindex
+>
+  <section class="not-found section-shell" aria-labelledby="not-found-title">
+    <p class="error-code" aria-hidden="true">404</p>
+    <div>
+      <p class="eyebrow">Page not found</p>
+      <h1 id="not-found-title">This page is outside the domain.</h1>
+      <p>The address may have changed, or the page may no longer exist.</p>
+      <a class="button-link" href={sitePath('/')}
+        >Return to the homepage <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </section>
+</BaseLayout>

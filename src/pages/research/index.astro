@@ -1,0 +1,87 @@
+---
+import { profile } from '../../data/profile';
+import { researchProjects } from '../../data/research';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const description =
+  'Research by Yifu Zhang in numerical analysis, randomized numerical linear algebra, approximation theory, operator learning and earlier analytic number theory.';
+---
+
+<BaseLayout title="Research" description={description}>
+  <header class="page-header section-shell">
+    <p class="eyebrow">Research</p>
+    <h1>Numerical methods for approximation and learning</h1>
+    <p class="page-deck">
+      My work brings together approximation theory, randomized numerical linear
+      algebra and numerical analysis, with a developing interest in operator
+      learning.
+    </p>
+  </header>
+
+  <section class="section-shell phd-note" aria-labelledby="phd-heading">
+    <div>
+      <p class="section-kicker">Incoming PhD</p>
+      <h2 id="phd-heading">Imperial College London</h2>
+    </div>
+    <div>
+      <p>
+        I will begin a Mathematics PhD at Imperial College London. My
+        supervisors are {
+          profile.supervisors.map((supervisor) => supervisor.name).join(', ')
+        }.
+      </p>
+      <ul class="supervisor-list" aria-label="PhD supervisors and institutions">
+        {
+          profile.supervisors.map((supervisor) => (
+            <li>
+              <span>{supervisor.name}</span>
+              <span>{supervisor.institution}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section
+    class="section-shell research-list"
+    aria-labelledby="projects-heading"
+  >
+    <div class="section-heading-row">
+      <div>
+        <p class="section-kicker">Projects</p>
+        <h2 id="projects-heading">Research record</h2>
+      </div>
+    </div>
+
+    {
+      researchProjects.map((project, index) => (
+        <article class="research-detail" id={project.slug}>
+          <div class="research-detail-index" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </div>
+          <div class="research-detail-main">
+            <p class="meta-line">{project.area}</p>
+            <h3>{project.title}</h3>
+            {project.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            <p class="supervision">{project.supervision}</p>
+            {project.links && (
+              <nav
+                class="text-links"
+                aria-label={`Resources for ${project.title}`}
+              >
+                {project.links.map((link) => (
+                  <a href={link.href}>
+                    {link.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </nav>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

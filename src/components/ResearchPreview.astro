@@ -1,0 +1,23 @@
+---
+import type { ResearchProject } from '../data/research';
+import { sitePath } from '../lib/site';
+
+interface Props {
+  project: ResearchProject;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+---
+
+<article class="research-preview">
+  <p class="research-number" aria-hidden="true">
+    {String(index + 1).padStart(2, '0')}
+  </p>
+  <p class="meta-line">{project.area}</p>
+  <h3>{project.title}</h3>
+  <p>{project.summary}</p>
+  <a class="read-more" href={`${sitePath('/research/')}#${project.slug}`}>
+    Read the project summary <span aria-hidden="true">→</span>
+  </a>
+</article>

@@ -1,0 +1,38 @@
+---
+import type { Publication } from '../data/publications';
+
+interface Props {
+  publication: Publication;
+  compact?: boolean;
+}
+
+const { publication, compact = false } = Astro.props;
+---
+
+<article class:list={['publication', { 'publication--compact': compact }]}>
+  <div class="publication-index" aria-hidden="true">01</div>
+  <div>
+    <p class="meta-line">{publication.type} · {publication.year}</p>
+    <h3>{publication.title}</h3>
+    <p class="publication-authors">{publication.authors.join(' · ')}</p>
+    {!compact && <p>{publication.summary}</p>}
+    <p class="publication-citation">
+      {publication.identifier} · {publication.subject}
+    </p>
+    <nav class="text-links" aria-label={`Resources for ${publication.title}`}>
+      <a href={publication.links.arxiv}
+        >arXiv abstract <span aria-hidden="true">↗</span></a
+      >
+      <a href={publication.links.pdf}>PDF <span aria-hidden="true">↗</span></a>
+      <a href={publication.links.code}>Code <span aria-hidden="true">↗</span></a
+      >
+      {
+        !compact && (
+          <a href={publication.links.doi}>
+            DOI <span aria-hidden="true">↗</span>
+          </a>
+        )
+      }
+    </nav>
+  </div>
+</article>

@@ -1,0 +1,51 @@
+---
+import { profile } from '../data/profile';
+import { sitePath } from '../lib/site';
+
+const pathname = Astro.url.pathname;
+const links = [
+  { label: 'Home', href: sitePath('/'), match: sitePath('/') },
+  {
+    label: 'Research',
+    href: sitePath('/research/'),
+    match: sitePath('/research/'),
+  },
+  {
+    label: 'Publications',
+    href: sitePath('/publications/'),
+    match: sitePath('/publications/'),
+  },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a
+      class="wordmark"
+      href={sitePath('/')}
+      aria-label={`${profile.name}, home`}
+    >
+      <span class="wordmark-name">{profile.name}</span>
+      <span class="wordmark-field">Mathematics</span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={pathname === link.match ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={sitePath(profile.links.cv)}
+        aria-label="Download Yifu Zhang's CV as a PDF"
+      >
+        CV <span aria-hidden="true">↓</span>
+      </a>
+    </nav>
+  </div>
+</header>

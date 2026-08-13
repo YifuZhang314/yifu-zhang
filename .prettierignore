@@ -1,0 +1,5 @@
+dist/
+node_modules/
+.astro/
+public/Yifu_Zhang_CV.pdf
+Yifu_Zhang_CV.docx

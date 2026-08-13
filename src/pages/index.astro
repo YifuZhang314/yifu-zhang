@@ -1,0 +1,120 @@
+---
+import PublicationItem from '../components/PublicationItem.astro';
+import ResearchPreview from '../components/ResearchPreview.astro';
+import { profile, researchAreaLine } from '../data/profile';
+import { publications } from '../data/publications';
+import { featuredResearch } from '../data/research';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sitePath } from '../lib/site';
+
+const description =
+  'Yifu Zhang is an incoming Mathematics PhD student at Imperial College London, working in numerical analysis, randomized numerical linear algebra, approximation theory and operator learning.';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: 'https://yifuzhang314.github.io/yifu-zhang/',
+  jobTitle: profile.currentPosition,
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: profile.currentInstitution,
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: profile.previousDegree.institution,
+  },
+  knowsAbout: profile.researchAreas,
+  sameAs: [profile.links.github],
+};
+---
+
+<BaseLayout
+  title={profile.name}
+  description={description}
+  jsonLd={personJsonLd}
+>
+  <section class="hero section-shell" aria-labelledby="home-title">
+    <div class="hero-main">
+      <p class="eyebrow">Mathematics · Imperial College London</p>
+      <h1 id="home-title">{profile.name}</h1>
+      <p class="hero-position">
+        {profile.currentPosition}<br />
+        at {profile.currentInstitution}
+      </p>
+      <p class="hero-areas">{researchAreaLine}</p>
+      <nav class="hero-links" aria-label="Profile links">
+        <a href={sitePath('/research/')}>Research</a>
+        <a href={sitePath('/publications/')}>Publications</a>
+        <a href={sitePath(profile.links.cv)}
+          >CV <span aria-hidden="true">↓</span></a
+        >
+        <a href={profile.links.github}
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </div>
+
+    <aside class="hero-aside" aria-label="Research focus">
+      <p class="aside-label">Research focus</p>
+      <p>
+        Numerical methods for approximation, structured linear algebra and
+        learning operators.
+      </p>
+      <span class="aside-mark" aria-hidden="true">N · A · O</span>
+    </aside>
+  </section>
+
+  <section
+    class="section-shell split-section"
+    aria-labelledby="statement-title"
+  >
+    <div class="section-label">
+      <p>01</p>
+      <h2 id="statement-title">Research statement</h2>
+    </div>
+    <div class="prose-large">
+      <p>{profile.statement}</p>
+      <p class="degree-note">
+        Previously: {profile.previousDegree.degree}, {
+          profile.previousDegree.institution
+        } — {profile.previousDegree.result}.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-shell section-block" aria-labelledby="featured-title">
+    <div class="section-heading-row">
+      <div>
+        <p class="section-kicker">02 · Selected work</p>
+        <h2 id="featured-title">Current research</h2>
+      </div>
+      <a class="section-link" href={sitePath('/research/')}
+        >All research <span aria-hidden="true">→</span></a
+      >
+    </div>
+    <div class="research-grid">
+      {
+        featuredResearch.map((project, index) => (
+          <ResearchPreview project={project} index={index} />
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="section-shell section-block publication-section"
+    aria-labelledby="publication-title"
+  >
+    <div class="section-heading-row">
+      <div>
+        <p class="section-kicker">03 · Publication</p>
+        <h2 id="publication-title">Recent preprint</h2>
+      </div>
+      <a class="section-link" href={sitePath('/publications/')}>
+        Full citation <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <PublicationItem publication={publications[0]} compact />
+  </section>
+</BaseLayout>
