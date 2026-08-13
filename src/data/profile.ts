@@ -19,7 +19,7 @@ export const profile = {
     { name: 'Matthew Colbrook', institution: 'University of Cambridge' },
   ],
   statement:
-    'I study numerical methods for approximation and learning, with an emphasis on stable, efficient algorithms informed by approximation theory and randomized numerical linear algebra.',
+    'I am interested in numerical analysis in general. I have worked in approximation theory and randomised numerical linear algebra before, and currently I am exploring their applications for areas like operator learning, Koopman operators and numerical methods for SPDEs ',
   links: {
     github: 'https://github.com/YifuZhang314',
     cv: '/Yifu_Zhang_CV.pdf',
