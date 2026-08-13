@@ -1,0 +1,67 @@
+---
+import PublicationItem from '../../components/PublicationItem.astro';
+import { profile } from '../../data/profile';
+import { publications } from '../../data/publications';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sitePath } from '../../lib/site';
+
+const publication = publications[0];
+const description =
+  'Verified publications and preprints by Yifu Zhang, including Efficient Function Approximation Under Heteroskedastic Noise.';
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: publication.title,
+  author: publication.authors.map((name) => ({ '@type': 'Person', name })),
+  datePublished: publication.datePublished,
+  identifier: publication.identifier,
+  url: publication.links.arxiv,
+  sameAs: [publication.links.doi],
+  isPartOf: {
+    '@type': 'Periodical',
+    name: 'arXiv',
+  },
+};
+---
+
+<BaseLayout
+  title="Publications"
+  description={description}
+  jsonLd={articleJsonLd}
+>
+  <header class="page-header section-shell">
+    <p class="eyebrow">Publications</p>
+    <h1>Publications and preprints</h1>
+    <p class="page-deck">
+      Verified research outputs, with links to the manuscript and accompanying
+      resources.
+    </p>
+  </header>
+
+  <section
+    class="section-shell publication-list"
+    aria-labelledby="preprints-heading"
+  >
+    <div class="section-heading-row">
+      <div>
+        <p class="section-kicker">2025</p>
+        <h2 id="preprints-heading">Preprint</h2>
+      </div>
+    </div>
+    <PublicationItem publication={publication} />
+    <details class="citation-details">
+      <summary>Citation text</summary>
+      <p>{publication.citation}</p>
+    </details>
+  </section>
+
+  <aside class="section-shell record-note" aria-label="Publication record note">
+    <p>
+      This page lists the research output currently verified from the public
+      record. For education and research experience, see the <a
+        href={sitePath(profile.links.cv)}>CV (PDF)</a
+      > or the <a href={sitePath('/research/')}>research page</a>.
+    </p>
+  </aside>
+</BaseLayout>
