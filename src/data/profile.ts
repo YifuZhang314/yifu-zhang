@@ -33,7 +33,7 @@ export const profile = {
     },
   ],
   statement:
-    'I am interested in numerical analysis in general. I have worked in approximation theory and randomised numerical linear algebra before, and currently I am exploring their applications for areas like operator learning, Koopman operators and numerical methods for SPDEs ',
+    'I am interested in numerical analysis in general. I have worked in approximation theory and randomised numerical linear algebra before, and currently I am exploring their applications for areas like operator learning, Koopman operators and numerical methods for SPDEs. ',
   links: {
     github: 'https://github.com/YifuZhang314',
     cv: '/Yifu_Zhang_CV.pdf',
