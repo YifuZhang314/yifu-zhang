@@ -39,8 +39,7 @@ const personJsonLd = {
       <p class="eyebrow">Mathematics · Imperial College London</p>
       <h1 id="home-title">{profile.name}</h1>
       <p class="hero-position">
-        {profile.currentPosition}<br />
-        at {profile.currentInstitution}
+        {profile.currentPosition} at {profile.currentInstitution}
       </p>
       <p class="hero-areas">{researchAreaLine}</p>
       <nav class="hero-links" aria-label="Profile links">
@@ -54,15 +53,6 @@ const personJsonLd = {
         >
       </nav>
     </div>
-
-    <aside class="hero-aside" aria-label="Research focus">
-      <p class="aside-label">Research focus</p>
-      <p>
-        Numerical methods for approximation, structured linear algebra and
-        learning operators.
-      </p>
-      <span class="aside-mark" aria-hidden="true">N · A · O</span>
-    </aside>
   </section>
 
   <section
@@ -70,15 +60,14 @@ const personJsonLd = {
     aria-labelledby="statement-title"
   >
     <div class="section-label">
-      <p>01</p>
       <h2 id="statement-title">Research statement</h2>
     </div>
     <div class="prose-large">
       <p>{profile.statement}</p>
       <p class="degree-note">
-        Previously: {profile.previousDegree.degree}, {
-          profile.previousDegree.institution
-        } — {profile.previousDegree.result}.
+        Oxford {profile.previousDegree.degree} — {
+          profile.previousDegree.result
+        }.
       </p>
     </div>
   </section>
@@ -86,7 +75,7 @@ const personJsonLd = {
   <section class="section-shell section-block" aria-labelledby="featured-title">
     <div class="section-heading-row">
       <div>
-        <p class="section-kicker">02 · Selected work</p>
+        <p class="section-kicker">Selected work</p>
         <h2 id="featured-title">Current research</h2>
       </div>
       <a class="section-link" href={sitePath('/research/')}
@@ -94,11 +83,7 @@ const personJsonLd = {
       >
     </div>
     <div class="research-grid">
-      {
-        featuredResearch.map((project, index) => (
-          <ResearchPreview project={project} index={index} />
-        ))
-      }
+      {featuredResearch.map((project) => <ResearchPreview project={project} />)}
     </div>
   </section>
 
@@ -108,7 +93,7 @@ const personJsonLd = {
   >
     <div class="section-heading-row">
       <div>
-        <p class="section-kicker">03 · Publication</p>
+        <p class="section-kicker">Publication</p>
         <h2 id="publication-title">Recent preprint</h2>
       </div>
       <a class="section-link" href={sitePath('/publications/')}>

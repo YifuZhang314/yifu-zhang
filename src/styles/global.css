@@ -1,6 +1,5 @@
 :root {
   --paper: #f4f0e7;
-  --paper-deep: #ebe5d9;
   --ink: #1d211f;
   --ink-soft: #505650;
   --ink-faint: #747a73;
@@ -14,8 +13,8 @@
   --sans:
     Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
-  --content: 74rem;
-  --measure: 45rem;
+  --content: 68rem;
+  --measure: 42rem;
 }
 
 *,
@@ -37,7 +36,7 @@ body {
   min-width: 20rem;
   margin: 0;
   background:
-    linear-gradient(var(--line), var(--line)) top 5.4rem left / 100% 1px
+    linear-gradient(var(--line), var(--line)) top 4.6rem left / 100% 1px
       no-repeat,
     var(--paper);
   color: var(--ink);
@@ -105,17 +104,17 @@ p {
 .section-shell,
 .header-inner,
 .footer-inner {
-  width: min(calc(100% - 3rem), var(--content));
+  width: min(calc(100% - 2.5rem), var(--content));
   margin-inline: auto;
 }
 
 .site-header {
-  min-height: 5.4rem;
+  min-height: 4.6rem;
 }
 
 .header-inner {
   display: flex;
-  min-height: 5.4rem;
+  min-height: 4.6rem;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -131,7 +130,7 @@ p {
 
 .wordmark-name {
   font-family: var(--serif);
-  font-size: 1.28rem;
+  font-size: 1.12rem;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -156,7 +155,7 @@ p {
   position: relative;
   padding-block: 0.5rem;
   color: var(--ink-soft);
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 650;
   text-decoration: none;
 }
@@ -185,26 +184,16 @@ p {
 }
 
 .hero {
-  display: grid;
-  min-height: calc(100vh - 5.4rem);
-  min-height: calc(100svh - 5.4rem);
-  grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
-  align-items: stretch;
   border-bottom: 1px solid var(--line-strong);
 }
 
 .hero-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(5rem, 11vw, 9rem) clamp(2rem, 6vw, 6.5rem)
-    clamp(4.5rem, 9vw, 7rem) 0;
+  padding-block: clamp(3.25rem, 5.5vw, 4.5rem) clamp(2.75rem, 4.5vw, 3.75rem);
 }
 
 .eyebrow,
 .section-kicker,
-.meta-line,
-.aside-label {
+.meta-line {
   color: var(--accent);
   font-size: 0.72rem;
   font-weight: 750;
@@ -214,23 +203,23 @@ p {
 
 .hero h1 {
   max-width: none;
-  margin: 0.35rem 0 1.7rem;
-  font-size: clamp(4.5rem, 11vw, 9.4rem);
-  letter-spacing: -0.06em;
+  margin: 0.3rem 0 1rem;
+  font-size: clamp(2.7rem, 4.5vw, 3.4rem);
+  letter-spacing: -0.045em;
 }
 
 .hero-position {
-  margin-bottom: 1.35rem;
+  margin-bottom: 0.8rem;
   font-family: var(--serif);
-  font-size: clamp(1.65rem, 3vw, 2.35rem);
-  line-height: 1.15;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  line-height: 1.3;
 }
 
 .hero-areas {
-  max-width: 50rem;
-  margin-bottom: 2.5rem;
+  max-width: 52rem;
+  margin-bottom: 1.6rem;
   color: var(--ink-soft);
-  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  font-size: 0.98rem;
 }
 
 .hero-links,
@@ -251,44 +240,12 @@ p {
   text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
-.hero-aside {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem 0 4.75rem clamp(1.5rem, 3vw, 3.5rem);
-  border-left: 1px solid var(--line);
-}
-
-.hero-aside p:not(.aside-label) {
-  max-width: 16rem;
-  margin-bottom: 2.2rem;
-  font-family: var(--serif);
-  font-size: 1.28rem;
-  line-height: 1.35;
-}
-
-.aside-mark {
-  color: var(--line-strong);
-  font-family: var(--serif);
-  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-
 .split-section {
   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(0, 3fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  padding-block: clamp(5rem, 9vw, 8rem);
+  grid-template-columns: minmax(10rem, 0.75fr) minmax(0, 3fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-block: clamp(2.75rem, 5vw, 4rem);
   border-bottom: 1px solid var(--line);
-}
-
-.section-label p {
-  margin-bottom: 0.35rem;
-  color: var(--accent);
-  font-family: var(--serif);
-  font-size: 1.3rem;
 }
 
 .section-label h2 {
@@ -300,10 +257,10 @@ p {
 }
 
 .prose-large > p:first-child {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.4rem;
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 3.25vw, 2.75rem);
-  line-height: 1.25;
+  font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+  line-height: 1.45;
 }
 
 .degree-note {
@@ -313,7 +270,7 @@ p {
 }
 
 .section-block {
-  padding-block: clamp(5rem, 9vw, 8rem);
+  padding-block: clamp(3rem, 5vw, 4.25rem);
   border-bottom: 1px solid var(--line);
 }
 
@@ -322,16 +279,16 @@ p {
   align-items: end;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .section-heading-row h2 {
   margin-bottom: 0;
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: clamp(1.7rem, 2.6vw, 2rem);
 }
 
 .section-kicker {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.45rem;
 }
 
 .research-grid {
@@ -342,30 +299,23 @@ p {
 
 .research-preview {
   position: relative;
-  padding: 2.2rem 2.5rem 0 0;
+  padding: 1.5rem 2rem 0 0;
 }
 
 .research-preview + .research-preview {
   padding-right: 0;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
   border-left: 1px solid var(--line);
-}
-
-.research-number {
-  margin-bottom: 2.5rem;
-  color: var(--line-strong);
-  font-family: var(--serif);
-  font-size: 2.2rem;
 }
 
 .research-preview h3 {
   max-width: 28rem;
-  margin-bottom: 1.25rem;
-  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
 }
 
-.research-preview > p:not(.meta-line, .research-number) {
-  margin-bottom: 1.6rem;
+.research-preview > p:not(.meta-line) {
+  margin-bottom: 1rem;
   color: var(--ink-soft);
 }
 
@@ -374,27 +324,18 @@ p {
 }
 
 .publication {
-  display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
-  gap: 2rem;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--line-strong);
-}
-
-.publication-index {
-  color: var(--line-strong);
-  font-family: var(--serif);
-  font-size: 2.2rem;
 }
 
 .publication h3 {
   max-width: 52rem;
   margin-bottom: 0.8rem;
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
 }
 
 .publication-authors {
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
@@ -405,21 +346,21 @@ p {
 }
 
 .publication-citation {
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.9rem;
   color: var(--ink-faint);
   font-size: 0.9rem;
 }
 
 .page-header {
-  padding-block: clamp(5.5rem, 10vw, 9rem) clamp(4.5rem, 8vw, 7rem);
+  padding-block: clamp(2.75rem, 4.5vw, 3.75rem) clamp(2.25rem, 4vw, 3.25rem);
   border-bottom: 1px solid var(--line-strong);
 }
 
 .page-header h1 {
   max-width: 62rem;
-  margin: 0.7rem 0 1.7rem;
-  font-size: clamp(3.4rem, 8vw, 7.2rem);
-  letter-spacing: -0.055em;
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  letter-spacing: -0.04em;
 }
 
 .page-deck {
@@ -427,85 +368,50 @@ p {
   margin-bottom: 0;
   color: var(--ink-soft);
   font-family: var(--serif);
-  font-size: clamp(1.3rem, 2.3vw, 1.8rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
 }
 
 .phd-note {
   display: grid;
   grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  padding-block: clamp(4.5rem, 8vw, 7rem);
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
   border-bottom: 1px solid var(--line);
 }
 
 .phd-note h2 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
 }
 
 .phd-note > div:last-child > p {
   font-family: var(--serif);
-  font-size: 1.35rem;
-}
-
-.supervisor-list {
-  max-width: var(--measure);
-  margin: 2.2rem 0 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
-  list-style: none;
-}
-
-.supervisor-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding-block: 0.75rem;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.9rem;
-}
-
-.supervisor-list li span:first-child {
-  font-weight: 750;
-}
-
-.supervisor-list li span:last-child {
-  color: var(--ink-faint);
-  text-align: right;
+  font-size: 1.12rem;
 }
 
 .research-list,
 .publication-list {
-  padding-block: clamp(5rem, 9vw, 8rem);
+  padding-block: clamp(2.5rem, 5vw, 3.75rem);
 }
 
 .research-detail {
-  display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
-  gap: 2rem;
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
   border-top: 1px solid var(--line-strong);
   scroll-margin-top: 1rem;
 }
 
-.research-detail-index {
-  color: var(--line-strong);
-  font-family: var(--serif);
-  font-size: 2.2rem;
-}
-
 .research-detail-main h3 {
   max-width: 50rem;
-  margin-bottom: 1.5rem;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin-bottom: 1rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
 }
 
 .research-detail-main > p:not(.meta-line, .supervision) {
   color: var(--ink-soft);
-  font-size: 1.03rem;
+  font-size: 1rem;
 }
 
 .supervision {
-  margin: 1.7rem 0;
+  margin: 1.1rem 0;
   font-family: var(--serif);
   font-style: italic;
 }
@@ -516,7 +422,7 @@ p {
 
 .citation-details {
   max-width: 50rem;
-  margin: 2.5rem 0 0 7.5rem;
+  margin: 1.75rem 0 0;
   padding-block: 1rem;
   border-block: 1px solid var(--line);
 }
@@ -535,37 +441,26 @@ p {
   color: var(--ink-soft);
 }
 
-.record-note {
-  padding: 2rem 0 6rem;
-}
-
-.record-note p {
-  padding: 1.4rem 1.6rem;
-  border-left: 2px solid var(--accent);
-  background: var(--paper-deep);
-  color: var(--ink-soft);
-}
-
 .not-found {
   display: grid;
-  min-height: calc(100vh - 15rem);
+  min-height: calc(100vh - 10rem);
   grid-template-columns: minmax(9rem, 1fr) minmax(0, 3fr);
   align-items: center;
   gap: clamp(2rem, 7vw, 7rem);
-  padding-block: 6rem;
+  padding-block: 4rem;
 }
 
 .error-code {
   color: var(--line-strong);
   font-family: var(--serif);
-  font-size: clamp(5rem, 14vw, 11rem);
+  font-size: clamp(4rem, 9vw, 7rem);
   line-height: 1;
 }
 
 .not-found h1 {
   max-width: 48rem;
   margin: 0.6rem 0 1.3rem;
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
 }
 
 .not-found > div p:not(.eyebrow) {
@@ -595,7 +490,7 @@ p {
 
 .footer-inner {
   display: flex;
-  min-height: 9rem;
+  min-height: 4.75rem;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -622,11 +517,11 @@ p {
 
 @media (max-width: 50rem) {
   body {
-    background-position: top 7.6rem left;
+    background-position: top 6.4rem left;
   }
 
   .header-inner {
-    min-height: 7.6rem;
+    min-height: 6.4rem;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -638,34 +533,14 @@ p {
     gap: 0.1rem 1rem;
   }
 
-  .hero {
-    min-height: 0;
-    grid-template-columns: 1fr;
-  }
-
   .hero-main {
-    padding: 5.5rem 0 4rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(4rem, 19vw, 7rem);
-  }
-
-  .hero-aside {
-    min-height: 0;
-    padding: 2.2rem 0 3.2rem;
-    border-top: 1px solid var(--line);
-    border-left: 0;
-  }
-
-  .aside-mark {
-    font-size: 2.5rem;
+    padding-block: 3.75rem 3.25rem;
   }
 
   .split-section,
   .phd-note {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 
   .research-grid {
@@ -674,12 +549,12 @@ p {
 
   .research-preview,
   .research-preview + .research-preview {
-    padding: 2.2rem 0 0;
+    padding: 1.5rem 0 0;
     border-left: 0;
   }
 
   .research-preview + .research-preview {
-    margin-top: 3rem;
+    margin-top: 2rem;
     border-top: 1px solid var(--line);
   }
 }
@@ -706,19 +581,19 @@ p {
   }
 
   .hero-main {
-    padding-top: 4.5rem;
+    padding-block: 3.25rem 3rem;
   }
 
   .hero h1 {
-    font-size: clamp(3.65rem, 19vw, 5.5rem);
+    font-size: 2.75rem;
   }
 
   .page-header h1 {
-    font-size: clamp(2.9rem, 15vw, 3.4rem);
+    font-size: 2.3rem;
   }
 
   .hero-position {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .section-heading-row {
@@ -727,28 +602,8 @@ p {
     gap: 1rem;
   }
 
-  .publication,
-  .research-detail {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-
-  .publication-index,
-  .research-detail-index {
-    font-size: 1.35rem;
-  }
-
   .citation-details {
     margin-left: 0;
-  }
-
-  .supervisor-list li {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .supervisor-list li span:last-child {
-    text-align: left;
   }
 
   .not-found {
@@ -764,7 +619,7 @@ p {
   }
 
   .footer-inner {
-    min-height: 11rem;
+    min-height: 8rem;
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;

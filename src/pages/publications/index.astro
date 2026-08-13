@@ -1,9 +1,7 @@
 ---
 import PublicationItem from '../../components/PublicationItem.astro';
-import { profile } from '../../data/profile';
 import { publications } from '../../data/publications';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sitePath } from '../../lib/site';
 
 const publication = publications[0];
 const description =
@@ -31,11 +29,9 @@ const articleJsonLd = {
   jsonLd={articleJsonLd}
 >
   <header class="page-header section-shell">
-    <p class="eyebrow">Publications</p>
-    <h1>Publications and preprints</h1>
+    <h1>Publications</h1>
     <p class="page-deck">
-      Verified research outputs, with links to the manuscript and accompanying
-      resources.
+      Preprints and publications, with links to manuscripts and code.
     </p>
   </header>
 
@@ -55,13 +51,4 @@ const articleJsonLd = {
       <p>{publication.citation}</p>
     </details>
   </section>
-
-  <aside class="section-shell record-note" aria-label="Publication record note">
-    <p>
-      This page lists the research output currently verified from the public
-      record. For education and research experience, see the <a
-        href={sitePath(profile.links.cv)}>CV (PDF)</a
-      > or the <a href={sitePath('/research/')}>research page</a>.
-    </p>
-  </aside>
 </BaseLayout>
