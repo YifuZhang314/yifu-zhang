@@ -34,9 +34,9 @@ export const researchProjects: readonly ResearchProject[] = [
     title: 'CUR approximation for Gram matrices',
     area: 'Randomized numerical linear algebra',
     summary:
-      'My Oxford MMath dissertation studied CUR approximation for Gram matrices.',
+      'My Oxford MMath dissertation studied Gram matrices approximations using CUR.',
     paragraphs: [
-      'My Oxford MMath dissertation studied CUR approximation for Gram matrices, at the intersection of structured low-rank approximation and randomized numerical linear algebra.',
+      'My Oxford MMath dissertation studied approximation of Gram matrices given a column subset selection, applying techniques from CUR approximation and sketch-and-solve least-squares.',
     ],
     supervision: 'Supervised by Yuji Nakatsukasa.',
     featured: true,
