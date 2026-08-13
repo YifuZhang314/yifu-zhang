@@ -1,0 +1,46 @@
+# Yifu Zhang — academic website
+
+This repository contains Yifu Zhang's academic research website. It is a static Astro site designed for GitHub Pages at:
+
+<https://yifuzhang314.github.io/yifu-zhang/>
+
+## Local development
+
+Use Node.js 22.19 or later (Node.js 24 is used in continuous integration).
+
+```sh
+npm ci
+npm run dev
+```
+
+Astro prints the local address after the development server starts.
+
+## Project structure
+
+- `src/pages/` defines the homepage, research, publications and error routes.
+- `src/components/` contains repeated layout and content components.
+- `src/data/` contains typed profile, research and publication records.
+- `src/styles/global.css` contains the site's responsive visual system.
+- `public/` contains static assets, including the downloadable CV.
+
+The temporary “incoming PhD student” wording is stored in `src/data/profile.ts` so it can be updated in one place after enrolment.
+
+## Validation
+
+```sh
+npm run check
+```
+
+This checks Astro and TypeScript, verifies formatting, creates a production build and validates every generated internal link. Pull requests also run a mobile Lighthouse audit against the production preview, enforcing scores of at least 95 in performance, accessibility, best practices and SEO. Other useful commands are:
+
+```sh
+npm run build
+npm run preview
+npm run format
+```
+
+## Deployment
+
+Pull requests run the validation job without deploying. A push to `main` validates the site, uploads the static `dist/` output and deploys it with the official GitHub Pages Actions.
+
+In the repository's **Settings → Pages** screen, the deployment source must be set to **GitHub Actions**. The Astro configuration includes the `/yifu-zhang/` project-site base path; no custom domain is configured.
