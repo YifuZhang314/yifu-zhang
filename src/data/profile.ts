@@ -42,7 +42,16 @@ export const profile = {
 
 export const researchAreaLine = profile.researchAreas.join(' · ');
 
-export const education = [
+export interface EducationItem {
+  period: string;
+  degree: string;
+  institution: string;
+  institutionUrl: string;
+  status: string;
+  award?: string;
+}
+
+export const education: readonly EducationItem[] = [
   {
     period: 'Oct 2026–Jun 2030',
     degree: 'PhD in Mathematics',
@@ -57,4 +66,12 @@ export const education = [
     institutionUrl: profile.previousDegree.institutionUrl,
     status: profile.previousDegree.result,
   },
-] as const;
+  {
+    period: 'Graduated Jun 2022',
+    degree: 'International Baccalaureate Diploma',
+    institution: 'Keystone Academy',
+    institutionUrl: 'https://www.keystoneacademy.cn/en',
+    status: 'Beijing, China',
+    award: 'Keystone Scholarship · Awarded 2021 and 2022',
+  },
+];
