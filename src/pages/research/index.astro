@@ -1,10 +1,11 @@
 ---
 import { profile } from '../../data/profile';
 import { researchProjects } from '../../data/research';
+import { academicEvents } from '../../data/events';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const description =
-  'Research by Yifu Zhang in numerical analysis, randomized numerical linear algebra, approximation theory, operator learning and earlier analytic number theory.';
+  'Research by Yifu Zhang, with selected conferences and workshops in numerical analysis, randomized numerical linear algebra, approximation theory and operator learning.';
 ---
 
 <BaseLayout title="Research" description={description}>
@@ -67,5 +68,42 @@ const description =
         </article>
       ))
     }
+  </section>
+
+  <section
+    class="section-shell events-section"
+    aria-labelledby="events-heading"
+  >
+    <div class="section-heading-row">
+      <div>
+        <h2 id="events-heading">Conferences and workshops</h2>
+      </div>
+    </div>
+
+    <ol class="event-list">
+      {
+        academicEvents.map((event) => (
+          <li>
+            <div class="event-meta">
+              <p class="meta-line">
+                {event.status} · {event.type}
+              </p>
+              <time datetime={event.startDate}>{event.dateLabel}</time>
+            </div>
+            <div class="event-main">
+              {event.shortName && (
+                <p class="event-short-name">{event.shortName}</p>
+              )}
+              <h3>
+                <a href={event.url}>
+                  {event.title} <span aria-hidden="true">↗</span>
+                </a>
+              </h3>
+              <p>{event.location}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
   </section>
 </BaseLayout>
