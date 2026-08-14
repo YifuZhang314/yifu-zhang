@@ -323,6 +323,13 @@ p {
   max-width: 46rem;
 }
 
+.education-award {
+  margin: 0.45rem 0 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .section-block {
   padding-block: clamp(3rem, 5vw, 4.25rem);
   border-bottom: 1px solid var(--line);
