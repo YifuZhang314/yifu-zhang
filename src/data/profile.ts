@@ -64,7 +64,7 @@ export const education: readonly EducationItem[] = [
     degree: profile.previousDegree.degree,
     institution: profile.previousDegree.institution,
     institutionUrl: profile.previousDegree.institutionUrl,
-    status: profile.previousDegree.result,
+    status: `${profile.previousDegree.result} · Ranked 8/85 in the MMath year`,
   },
   {
     period: 'Graduated Jun 2022',
