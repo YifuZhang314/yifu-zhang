@@ -44,3 +44,17 @@ npm run format
 Pull requests run the validation job without deploying. A push to `main` validates the site, uploads the static `dist/` output and deploys it with the official GitHub Pages Actions.
 
 In the repository's **Settings → Pages** screen, the deployment source must be set to **GitHub Actions**. The Astro configuration includes the `/yifu-zhang/` project-site base path; no custom domain is configured.
+
+## Writing a blog post
+
+Create a Markdown draft with:
+
+```sh
+npm run new:post -- "Post title"
+```
+
+The command prints the new file path under `src/content/blog/`. Write the post in Markdown, preview it with `npm run dev`, and keep `draft: true` while it is unfinished. Drafts appear during local development but are omitted from production pages and RSS. Change the field to `draft: false`, then commit and push to publish through the existing GitHub Pages workflow.
+
+Because this repository is public, committed drafts remain readable in the GitHub source even when they are absent from the website. Keep sensitive drafts uncommitted or in private storage.
+
+Post frontmatter supports a title, description, publication date, optional updated date, tags, and draft status. Inline and display LaTeX are supported using `$...$` and `$$...$$`.

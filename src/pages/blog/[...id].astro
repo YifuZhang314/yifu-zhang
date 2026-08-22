@@ -1,0 +1,38 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  newer?: CollectionEntry<'blog'>;
+  older?: CollectionEntry<'blog'>;
+}
+
+export async function getStaticPaths() {
+  const posts = (
+    await getCollection(
+      'blog',
+      ({ data }) => import.meta.env.DEV || !data.draft,
+    )
+  ).sort(
+    (left, right) =>
+      right.data.published.getTime() - left.data.published.getTime(),
+  );
+
+  return posts.map((post, index) => ({
+    params: { id: post.id },
+    props: {
+      post,
+      newer: posts[index - 1],
+      older: posts[index + 1],
+    },
+  }));
+}
+
+const { post, newer, older } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<BlogPostLayout post={post} headings={headings} newer={newer} older={older}>
+  <Content />
+</BlogPostLayout>
