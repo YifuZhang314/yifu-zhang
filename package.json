@@ -11,11 +11,17 @@
     "check:format": "prettier --check .",
     "check:links": "node scripts/check-links.mjs",
     "check": "npm run check:astro && npm run check:format && npm run build && npm run check:links",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "new:post": "node scripts/new-post.mjs"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "7.2.2",
+    "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.3",
-    "astro": "7.2.1"
+    "astro": "7.2.1",
+    "katex": "0.18.4",
+    "rehype-katex": "7.0.1",
+    "remark-math": "6.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",

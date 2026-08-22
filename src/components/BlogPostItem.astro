@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { sitePath } from '../lib/site';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(post.data.published);
+---
+
+<li class="blog-list-item">
+  <div class="blog-list-meta">
+    <time datetime={post.data.published.toISOString()}>{formattedDate}</time>
+    {post.data.draft && <span class="draft-label">Draft</span>}
+  </div>
+  <article>
+    <h3>
+      <a href={sitePath(`/blog/${post.id}/`)}>{post.data.title}</a>
+    </h3>
+    <p class="blog-list-description">{post.data.description}</p>
+    {
+      post.data.tags.length > 0 && (
+        <ul class="tag-list" aria-label="Topics">
+          {post.data.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+  </article>
+</li>

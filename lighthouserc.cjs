@@ -2,7 +2,10 @@ module.exports = {
   ci: {
     collect: {
       startServerCommand: 'npm run preview -- --host 127.0.0.1',
-      url: ['http://127.0.0.1:4321/yifu-zhang/'],
+      url: [
+        'http://127.0.0.1:4321/yifu-zhang/',
+        'http://127.0.0.1:4321/yifu-zhang/blog/',
+      ],
       numberOfRuns: 3,
       settings: {
         chromeFlags: '--no-sandbox --disable-dev-shm-usage',

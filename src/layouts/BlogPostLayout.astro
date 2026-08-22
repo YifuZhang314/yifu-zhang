@@ -1,0 +1,141 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import 'katex/dist/katex.min.css';
+import { profile } from '../data/profile';
+import { sitePath } from '../lib/site';
+import BaseLayout from './BaseLayout.astro';
+
+interface PostLink {
+  id: string;
+  data: CollectionEntry<'blog'>['data'];
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headings: readonly { depth: number; slug: string; text: string }[];
+  newer?: PostLink;
+  older?: PostLink;
+}
+
+const { post, headings, newer, older } = Astro.props;
+const publishedIso = post.data.published.toISOString();
+const updatedIso = post.data.updated?.toISOString();
+const formattedPublished = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(post.data.published);
+const formattedUpdated = post.data.updated
+  ? new Intl.DateTimeFormat('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(post.data.updated)
+  : undefined;
+const tableOfContents = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+const canonicalUrl = new URL(
+  sitePath(`/blog/${post.id}/`),
+  Astro.site ?? Astro.url.origin,
+);
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: publishedIso,
+  ...(updatedIso ? { dateModified: updatedIso } : {}),
+  url: canonicalUrl,
+  author: {
+    '@type': 'Person',
+    name: profile.name,
+    url: new URL(sitePath('/'), Astro.site ?? Astro.url.origin),
+  },
+  keywords: post.data.tags,
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  jsonLd={articleJsonLd}
+  openGraphType="article"
+  publishedTime={publishedIso}
+  modifiedTime={updatedIso}
+  noindex={post.data.draft}
+>
+  <article class="blog-post section-shell">
+    <header class="blog-post-header">
+      <a class="blog-back-link" href={sitePath('/blog/')}
+        ><span aria-hidden="true">←</span> Blog</a
+      >
+      <p class="blog-post-date">
+        {post.data.draft && <span class="draft-label">Draft</span>}
+        <time datetime={publishedIso}>{formattedPublished}</time>
+        {
+          formattedUpdated && updatedIso && (
+            <>
+              <span aria-hidden="true"> · </span>
+              Updated <time datetime={updatedIso}>{formattedUpdated}</time>
+            </>
+          )
+        }
+      </p>
+      <h1>{post.data.title}</h1>
+      <p class="blog-post-deck">{post.data.description}</p>
+      {
+        post.data.tags.length > 0 && (
+          <ul class="tag-list" aria-label="Topics">
+            {post.data.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    {
+      tableOfContents.length >= 3 && (
+        <nav class="blog-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol>
+            {tableOfContents.map((heading) => (
+              <li class:list={{ 'toc-subheading': heading.depth === 3 }}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )
+    }
+
+    <div class="blog-prose">
+      <slot />
+    </div>
+
+    <footer class="blog-post-footer">
+      <a href={sitePath('/blog/')}>
+        <span aria-hidden="true">←</span> All posts
+      </a>
+      {
+        (newer || older) && (
+          <nav aria-label="Adjacent posts">
+            {newer && (
+              <a href={sitePath(`/blog/${newer.id}/`)}>
+                <span aria-hidden="true">←</span> Newer: {newer.data.title}
+              </a>
+            )}
+            {older && (
+              <a href={sitePath(`/blog/${older.id}/`)}>
+                Older: {older.data.title} <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </footer>
+  </article>
+</BaseLayout>

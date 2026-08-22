@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostItem from '../../components/BlogPostItem.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sitePath } from '../../lib/site';
+
+const description =
+  'Notes by Yifu Zhang on numerical analysis, randomized numerical linear algebra, approximation theory, operator learning and related mathematics.';
+const posts = (
+  await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)
+).sort(
+  (left, right) =>
+    right.data.published.getTime() - left.data.published.getTime(),
+);
+---
+
+<BaseLayout title="Blog" description={description}>
+  <header class="page-header section-shell">
+    <p class="eyebrow">Notes and exposition</p>
+    <h1>Blog</h1>
+    <p class="page-deck">
+      Writing on numerical analysis, approximation theory, randomized numerical
+      linear algebra, operator learning and related mathematics.
+    </p>
+  </header>
+
+  <section class="blog-index section-shell" aria-labelledby="posts-heading">
+    <div class="section-heading-row blog-index-heading">
+      <h2 id="posts-heading">Latest writing</h2>
+      <a class="section-link" href={sitePath('/rss.xml')}
+        >RSS <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    {
+      posts.length > 0 ? (
+        <ol class="blog-list">
+          {posts.map((post) => (
+            <BlogPostItem post={post} />
+          ))}
+        </ol>
+      ) : (
+        <p class="blog-empty">
+          The first post is being prepared. You can subscribe through the RSS
+          feed in the meantime.
+        </p>
+      )
+    }
+  </section>
+</BaseLayout>

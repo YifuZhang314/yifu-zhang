@@ -15,6 +15,11 @@ const links = [
     href: sitePath('/publications/'),
     match: sitePath('/publications/'),
   },
+  {
+    label: 'Blog',
+    href: sitePath('/blog/'),
+    match: sitePath('/blog/'),
+  },
 ];
 ---
 
@@ -34,7 +39,15 @@ const links = [
         links.map((link) => (
           <a
             href={link.href}
-            aria-current={pathname === link.match ? 'page' : undefined}
+            aria-current={
+              link.match === sitePath('/')
+                ? pathname === link.match
+                  ? 'page'
+                  : undefined
+                : pathname.startsWith(link.match)
+                  ? 'page'
+                  : undefined
+            }
           >
             {link.label}
           </a>
