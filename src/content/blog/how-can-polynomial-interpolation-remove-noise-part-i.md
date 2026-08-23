@@ -32,7 +32,7 @@ and find the unique degree-$N$ polynomial $p_N$ that goes through all $N+1$
 sample points.
 
 **Statisticians:** We should take $N+1$ samples (randomly or deterministically)
-and use least squares to fit the samples to a polynomial of degree $n\leq N$.
+and use least-squares to fit the samples to a polynomial of degree $n\leq N$.
 
 The numerical analysts' approach has several computational advantages:
 Chebyshev interpolation has a near-best convergence guarantee, can be performed
@@ -69,7 +69,7 @@ a small amount of noise can magnify the approximation error.
   </figcaption>
 </figure>
 
-By contrast, least squares is much more robust to noise provided a suitable
+By contrast, least-squares is much more robust to noise provided a suitable
 degree $n$ is chosen. It can reduce the noise at a rate of
 $O(1/\sqrt{N})$.
 
@@ -88,7 +88,7 @@ $O(1/\sqrt{N})$.
   </figcaption>
 </figure>
 
-It might be counter-intuitive—or at least it certainly was to me—that a
+It might be counter-intuitive, or at least it certainly was to me, that a
 lower-degree polynomial would achieve a better approximation. This is
 essentially explained by polynomial overfitting; see Larry Wasserman's [_All of
 Statistics_](https://doi.org/10.1007/978-0-387-21736-9).
@@ -163,7 +163,7 @@ name suggests, three steps:
 
 How good is NoisyChebtrunc in practice? It has the best of both worlds: the speed
 and stability of Chebyshev interpolation and the $O(1/\sqrt{N})$ denoising
-effect of least squares. Here is NoisyChebtrunc applied to the same example with
+effect of least-squares. Here is NoisyChebtrunc applied to the same example with
 201 sample points—voilà!
 
 <figure>
@@ -196,7 +196,7 @@ degree $n$, and Mallows' $C_p$ gives a good way to choose $n$.
 
 [^2]: This is no surprise to readers familiar with the connection between Chebyshev interpolation and Fourier series. See Lloyd N. Trefethen's [_Approximation Theory and Approximation Practice_, Extended Edition](https://doi.org/10.1137/1.9781611975949).
 
-[^3]: In fact, Matsuda and Nakatsukasa showed that NoisyChebtrunc can be viewed as weighted least squares; they then applied this insight to prove high-probability convergence guarantees.
+[^3]: In fact, Matsuda and Nakatsukasa showed that NoisyChebtrunc can be viewed as weighted least-squares; they then applied this insight to prove high-probability convergence guarantees.
 
 ## References
 
