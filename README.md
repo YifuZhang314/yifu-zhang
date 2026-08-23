@@ -58,3 +58,9 @@ The command prints the new file path under `src/content/blog/`. Write the post i
 Because this repository is public, committed drafts remain readable in the GitHub source even when they are absent from the website. Keep sensitive drafts uncommitted or in private storage.
 
 Post frontmatter supports a title, description, publication date, optional updated date, tags, and draft status. Inline and display LaTeX are supported using `$...$` and `$$...$$`.
+
+### Blog comments
+
+Published posts use [utterances](https://utteranc.es/) for comments. Readers sign in with GitHub, comments are stored as issues in this public repository, and the site does not ask for or store email addresses.
+
+Before enabling comments in production, install the utterances GitHub App for this repository once at [github.com/apps/utterances](https://github.com/apps/utterances). The widget maps each post to an issue by its URL path and applies the `blog comments` label.

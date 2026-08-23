@@ -854,6 +854,41 @@ p {
   text-align: right;
 }
 
+.blog-comments {
+  max-width: 44rem;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  padding-top: clamp(2.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--line-strong);
+}
+
+.blog-comments-header h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.55rem, 3vw, 1.9rem);
+}
+
+.blog-comments-header p {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.blog-comments-widget {
+  min-height: 8rem;
+}
+
+.blog-comments-widget .utterances {
+  max-width: 100%;
+}
+
+.blog-comments-widget noscript {
+  display: block;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 .not-found {
   display: grid;
   min-height: calc(100vh - 10rem);
