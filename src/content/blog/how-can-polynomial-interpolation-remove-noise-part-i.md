@@ -37,9 +37,7 @@ and use least squares to fit the samples to a polynomial of degree $n\leq N$.
 The numerical analysts' approach has several computational advantages:
 Chebyshev interpolation has a near-best convergence guarantee, can be performed
 in $O(N\log N)$ time, and can be computed stably using the fast Fourier
-transform (FFT). For more on the remarkable properties of the FFT and Chebyshev
-interpolation, see [Ethan Epperly's excellent introduction to Chebyshev
-polynomials](https://www.ethanepperly.com/index.php/2022/08/13/chebyshev-polynomials/).
+transform (FFT).[^1]
 
 ## Why interpolation struggles with noise
 
@@ -104,11 +102,7 @@ world. Is there a quick fix we can apply to $p_N$ to remove them?
 It turns out there is: just truncate the high-order terms! The higher-order
 coefficients of $p_N$ are typically small and somehow "carry" the noisy
 oscillations in the approximation. Think of the Fourier series, where the
-higher-order terms contain higher frequencies and hence more oscillations. This
-is no surprise to readers familiar with the connection between Chebyshev
-interpolation and Fourier series; see Lloyd N. Trefethen's [_Approximation
-Theory and Approximation Practice_, Extended
-Edition](https://doi.org/10.1137/1.9781611975949).
+higher-order terms contain higher frequencies and hence more oscillations.[^2]
 
 Therefore, if we choose some small $n$ and simply chop off the terms of $p_N$ to
 get a degree-$n$ polynomial $\tilde{p}_n$, we can remove oscillations and
@@ -143,10 +137,8 @@ $$
 n = \operatorname*{arg\,min}_{\ell} C_p(\ell).
 $$
 
-<!-- Draft review note: the LaTeX calls hat-sigma an unbiased estimator. The paper states that hat-sigma-squared is approximately unbiased under a Gaussian, well-specified polynomial model. The prose below preserves the authoritative LaTeX claim pending author review. -->
-
-Here $\hat{\sigma}$ is an unbiased estimate of the standard deviation of the
-noise using the samples.
+Here $\hat{\sigma}$ is an estimator of the standard deviation of the noise based
+on the samples.
 
 The idea is a balancing act between keeping more information about the
 underlying $f$ and removing noise. The first term measures the size of the
@@ -190,10 +182,8 @@ effect of least squares. Here is NoisyChebtrunc applied to the same example with
 </figure>
 
 The truncated interpolant fits the original $f$ much better than the plain
-interpolant does, with accuracy similar to that of the least-squares solution.
-In fact, Matsuda and Nakatsukasa showed that NoisyChebtrunc can be viewed as
-weighted least squares; they then applied this insight to prove high-probability
-convergence guarantees.
+interpolant does, with accuracy similar to that of the least-squares
+solution.[^3]
 
 ## Before you go
 
@@ -201,6 +191,12 @@ Interpolation is one of the most common tools in the repertoire of a
 computational mathematician. If your interpolants are not behaving well due to
 noisy samples, a simple but effective trick is to truncate to a much smaller
 degree $n$, and Mallows' $C_p$ gives a good way to choose $n$.
+
+[^1]: If you want to know more about the amazing properties of the FFT and Chebyshev interpolation, please check out Ethan Epperly's (much better written) post, ["Chebyshev Polynomials and Chebyshev Interpolation"](https://www.ethanepperly.com/index.php/2022/08/13/chebyshev-polynomials/).
+
+[^2]: This is no surprise to readers familiar with the connection between Chebyshev interpolation and Fourier series. See Lloyd N. Trefethen's [_Approximation Theory and Approximation Practice_, Extended Edition](https://doi.org/10.1137/1.9781611975949).
+
+[^3]: In fact, Matsuda and Nakatsukasa showed that NoisyChebtrunc can be viewed as weighted least squares; they then applied this insight to prove high-probability convergence guarantees.
 
 ## References
 
