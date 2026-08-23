@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import 'katex/dist/katex.min.css';
+import BlogComments from '../components/BlogComments.astro';
 import { profile } from '../data/profile';
 import { sitePath } from '../lib/site';
 import BaseLayout from './BaseLayout.astro';
@@ -137,5 +138,7 @@ const articleJsonLd = {
         )
       }
     </footer>
+
+    {!post.data.draft && <BlogComments />}
   </article>
 </BaseLayout>
