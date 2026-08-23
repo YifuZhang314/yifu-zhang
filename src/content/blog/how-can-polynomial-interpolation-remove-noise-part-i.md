@@ -6,7 +6,7 @@ tags:
   - Numerical analysis
   - Approximation theory
   - Chebyshev interpolation
-draft: true
+draft: false
 ---
 
 _This blog post is based on the work of Takeru Matsuda and my mentor, Yuji

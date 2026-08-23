@@ -831,6 +831,10 @@ p {
   padding-block: 0.3rem;
 }
 
+.katex .msupsub .size3 {
+  font-size: 0.6em;
+}
+
 .blog-post-footer {
   display: flex;
   align-items: flex-start;
