@@ -30,7 +30,14 @@ jobs:
         run: npm ci
 
       - name: Validate source and production build
-        run: npm run check
+        run: |
+          if [ -z "${PUBLIC_CUSDIS_APP_ID}" ]; then
+            echo "::error::PUBLIC_CUSDIS_APP_ID is not configured as a repository Actions variable."
+            exit 1
+          fi
+          npm run check
+        env:
+          PUBLIC_CUSDIS_APP_ID: ${{ vars.PUBLIC_CUSDIS_APP_ID }}
 
       - name: Audit production homepage with Lighthouse
         uses: treosh/lighthouse-ci-action@v12

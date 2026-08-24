@@ -139,6 +139,14 @@ const articleJsonLd = {
       }
     </footer>
 
-    {!post.data.draft && <BlogComments />}
+    {
+      !post.data.draft && (
+        <BlogComments
+          pageId={post.id}
+          pageUrl={canonicalUrl.toString()}
+          pageTitle={post.data.title}
+        />
+      )
+    }
   </article>
 </BaseLayout>

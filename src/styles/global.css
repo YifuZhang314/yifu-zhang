@@ -874,11 +874,13 @@ p {
 }
 
 .blog-comments-widget {
-  min-height: 8rem;
+  min-height: 24rem;
 }
 
-.blog-comments-widget .utterances {
+.blog-comments-widget iframe {
+  min-height: 24rem;
   max-width: 100%;
+  border: 0;
 }
 
 .blog-comments-widget noscript {

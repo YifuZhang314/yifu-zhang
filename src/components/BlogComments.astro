@@ -1,35 +1,55 @@
-<section class="blog-comments" aria-labelledby="blog-comments-heading">
-  <header class="blog-comments-header">
-    <h2 id="blog-comments-heading">Comments</h2>
-    <p>
-      Comments are hosted on GitHub. Sign in with GitHub to join the discussion;
-      no email address is requested by this site.
-    </p>
-  </header>
+---
+interface Props {
+  pageId: string;
+  pageUrl: string;
+  pageTitle: string;
+}
 
-  <div class="blog-comments-widget">
-    <noscript>
-      JavaScript is required to view the comments here. You can still visit the
-      <a href="https://github.com/YifuZhang314/yifu-zhang/issues"
-        >blog discussions on GitHub</a
-      >.
-    </noscript>
-  </div>
-</section>
+const { pageId, pageUrl, pageTitle } = Astro.props;
+const cusdisAppId = import.meta.env.PUBLIC_CUSDIS_APP_ID?.trim();
+---
+
+{
+  cusdisAppId && (
+    <section class="blog-comments" aria-labelledby="blog-comments-heading">
+      <header class="blog-comments-header">
+        <h2 id="blog-comments-heading">Comments</h2>
+        <p>
+          Comments are moderated before appearing and are hosted by{' '}
+          <a href="https://cusdis.com/">Cusdis</a>. No GitHub account is
+          required.
+        </p>
+      </header>
+
+      <div class="blog-comments-widget">
+        <div
+          id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id={cusdisAppId}
+          data-page-id={pageId}
+          data-page-url={pageUrl}
+          data-page-title={pageTitle}
+          data-theme="light"
+        />
+        <noscript>JavaScript is required to view and post comments.</noscript>
+      </div>
+    </section>
+  )
+}
 
 <script>
   const commentsContainer = document.querySelector('.blog-comments-widget');
 
   const loadComments = () => {
-    if (!commentsContainer || commentsContainer.querySelector('script')) return;
+    if (
+      !commentsContainer ||
+      commentsContainer.querySelector('script[data-cusdis-loader]')
+    )
+      return;
 
     const commentsScript = document.createElement('script');
-    commentsScript.src = 'https://utteranc.es/client.js';
-    commentsScript.setAttribute('repo', 'YifuZhang314/yifu-zhang');
-    commentsScript.setAttribute('issue-term', 'pathname');
-    commentsScript.setAttribute('label', 'blog comments');
-    commentsScript.setAttribute('theme', 'github-light');
-    commentsScript.crossOrigin = 'anonymous';
+    commentsScript.src = 'https://cusdis.com/js/cusdis.es.js';
+    commentsScript.dataset.cusdisLoader = '';
     commentsScript.async = true;
     commentsContainer.prepend(commentsScript);
   };
