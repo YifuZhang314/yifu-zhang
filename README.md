@@ -61,6 +61,6 @@ Post frontmatter supports a title, description, publication date, optional updat
 
 ### Blog comments
 
-Published posts use [utterances](https://utteranc.es/) for comments. Readers sign in with GitHub, comments are stored as issues in this public repository, and the site does not ask for or store email addresses.
+Published posts use [Cusdis Cloud](https://cusdis.com/) for moderated comments. The widget is enabled only when `PUBLIC_CUSDIS_APP_ID` is available at build time.
 
-Before enabling comments in production, install the utterances GitHub App for this repository once at [github.com/apps/utterances](https://github.com/apps/utterances). The widget maps each post to an issue by its URL path and applies the `blog comments` label.
+For local development, copy `.env.example` to `.env` and add the public Cusdis App ID. For GitHub Pages, create the Actions repository variable `PUBLIC_CUSDIS_APP_ID` with the same value. Each post uses its content ID as the stable Cusdis page ID.
