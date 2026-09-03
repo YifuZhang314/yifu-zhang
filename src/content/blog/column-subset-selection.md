@@ -165,8 +165,7 @@ thoughts on them.[^2]
    time of QR!)
 
 _Before you go:_ the idea that a few exact columns can accurately represent the
-entire matrix is mind-blowing to me, and it's something I feel like more people
-should know about. Whether you want to find some representative data or need a
+entire matrix is quite mind-blowing to me, and it's something that can find more applications to other scientific problems. Whether you want to find some representative data or need a
 low-rank approximation,[^4] I hope you might consider selecting some columns!
 
 [^1]: This is something of an oversimplification, since, to determine whether the new column is important, we need to compare it with the previous columns. However, this is still much easier than updating the SVD.
