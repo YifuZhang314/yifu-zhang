@@ -61,6 +61,8 @@ Post frontmatter supports a title, description, publication date, optional updat
 
 ### Blog comments
 
-Published posts use [Cusdis Cloud](https://cusdis.com/) for moderated comments. The widget is enabled only when `PUBLIC_CUSDIS_APP_ID` is available at build time.
+Published posts use [FastComments](https://fastcomments.com/). The public tenant ID is configured in `src/components/BlogComments.astro`; no environment variable or API secret is needed for local builds or GitHub Pages. Each post uses its content ID as the stable FastComments `urlId`, alongside its canonical URL and title. The widget loads when the comments section approaches the viewport.
 
-For local development, copy `.env.example` to `.env` and add the public Cusdis App ID. For GitHub Pages, create the Actions repository variable `PUBLIC_CUSDIS_APP_ID` with the same value. Each post uses its content ID as the stable Cusdis page ID.
+In the FastComments dashboard, register `yifuzhang314.github.io` as an allowed domain. Enable **Allow Anonymous Commenting** and **Disable Email Inputs** in a customization rule covering all posts (leave URL ID empty or use `*`). Keep automatic deletion of unverified comments disabled. The embed hides the unverified label so guests are not prompted to verify an email they have not supplied. See the [configuration documentation](https://docs.fastcomments.com/guide-customizations-and-configuration.html).
+
+Guests who do not supply an email cannot receive email updates. These settings do not disable notification preferences for visitors already signed into FastComments. Moderation and spam settings are managed in the FastComments dashboard.
