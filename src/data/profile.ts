@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Yifu Zhang',
-  currentPosition: 'Incoming Mathematics PhD student',
+  currentPosition: 'First-year Mathematics PhD student',
   currentInstitution: 'Imperial College London',
   currentInstitutionUrl: 'https://www.imperial.ac.uk/mathematics/',
   previousDegree: {
@@ -53,11 +53,11 @@ export interface EducationItem {
 
 export const education: readonly EducationItem[] = [
   {
-    period: 'Oct 2026–Jun 2030',
+    period: 'Oct 2026–present',
     degree: 'PhD in Mathematics',
     institution: profile.currentInstitution,
     institutionUrl: profile.currentInstitutionUrl,
-    status: 'Incoming',
+    status: 'First year',
   },
   {
     period: 'Oct 2022–Jun 2026',
