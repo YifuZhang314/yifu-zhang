@@ -20,12 +20,11 @@ const description =
   <section class="section-shell phd-note" aria-labelledby="phd-heading">
     <div>
       <p class="section-kicker">Current position</p>
-      <h2 id="phd-heading">Incoming PhD</h2>
+      <h2 id="phd-heading">First-year PhD</h2>
     </div>
     <div>
       <p>
-        Incoming Mathematics PhD student at Imperial College London, supervised
-        by {
+        {profile.currentPosition} at {profile.currentInstitution}, supervised by {
           profile.supervisors.map((supervisor) => supervisor.name).join(', ')
         }.
       </p>

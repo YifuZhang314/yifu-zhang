@@ -23,7 +23,7 @@ Astro prints the local address after the development server starts.
 - `src/styles/global.css` contains the site's responsive visual system.
 - `public/` contains static assets, including the downloadable CV.
 
-The temporary “incoming PhD student” wording is stored in `src/data/profile.ts` so it can be updated in one place after enrolment.
+The current academic position and education details are stored in `src/data/profile.ts`. The homepage, its search and social metadata, and the research-page introduction share this profile data. Update the PhD year there and in the research-page heading as the degree progresses, and keep the downloadable CV in sync.
 
 ## Validation
 
