@@ -18,7 +18,7 @@ export const GET: APIRoute = async (context) => {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.published,
-      link: sitePath(`/blog/${post.id}/`),
+      link: post.data.externalUrl ?? sitePath(`/blog/${post.id}/`),
       categories: post.data.tags,
     })),
     customData: '<language>en-gb</language>',

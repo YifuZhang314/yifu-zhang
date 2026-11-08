@@ -59,6 +59,8 @@ Because this repository is public, committed drafts remain readable in the GitHu
 
 Post frontmatter supports a title, description, publication date, optional updated date, tags, and draft status. Inline and display LaTeX are supported using `$...$` and `$$...$$`.
 
+For writing published elsewhere, set `externalUrl` to the original article URL. The blog index, adjacent-post navigation and RSS feed link directly to that URL, and no local article page is generated.
+
 ### Blog comments
 
 Published posts use [FastComments](https://fastcomments.com/). The public tenant ID is configured in `src/components/BlogComments.astro`; no environment variable or API secret is needed for local builds or GitHub Pages. Each post uses its content ID as the stable FastComments `urlId`, alongside its canonical URL and title. The widget loads when the comments section approaches the viewport.
