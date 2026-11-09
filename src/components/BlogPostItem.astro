@@ -22,7 +22,10 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
   </div>
   <article>
     <h3>
-      <a href={sitePath(`/blog/${post.id}/`)}>{post.data.title}</a>
+      <a href={post.data.externalUrl ?? sitePath(`/blog/${post.id}/`)}>
+        {post.data.title}
+        {post.data.externalUrl && <span aria-hidden="true">↗</span>}
+      </a>
     </h3>
     <p class="blog-list-description">{post.data.description}</p>
     {

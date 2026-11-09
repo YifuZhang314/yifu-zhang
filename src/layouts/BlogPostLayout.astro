@@ -125,12 +125,16 @@ const articleJsonLd = {
         (newer || older) && (
           <nav aria-label="Adjacent posts">
             {newer && (
-              <a href={sitePath(`/blog/${newer.id}/`)}>
+              <a
+                href={newer.data.externalUrl ?? sitePath(`/blog/${newer.id}/`)}
+              >
                 <span aria-hidden="true">←</span> Newer: {newer.data.title}
               </a>
             )}
             {older && (
-              <a href={sitePath(`/blog/${older.id}/`)}>
+              <a
+                href={older.data.externalUrl ?? sitePath(`/blog/${older.id}/`)}
+              >
                 Older: {older.data.title} <span aria-hidden="true">→</span>
               </a>
             )}

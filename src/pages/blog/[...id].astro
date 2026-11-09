@@ -19,14 +19,16 @@ export async function getStaticPaths() {
       right.data.published.getTime() - left.data.published.getTime(),
   );
 
-  return posts.map((post, index) => ({
-    params: { id: post.id },
-    props: {
-      post,
-      newer: posts[index - 1],
-      older: posts[index + 1],
-    },
-  }));
+  return posts
+    .map((post, index) => ({
+      params: { id: post.id },
+      props: {
+        post,
+        newer: posts[index - 1],
+        older: posts[index + 1],
+      },
+    }))
+    .filter(({ props }) => !props.post.data.externalUrl);
 }
 
 const { post, newer, older } = Astro.props;
